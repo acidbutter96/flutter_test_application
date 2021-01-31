@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen>
         AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     _animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
+      if (status == AnimationStatus.copleted) {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => HomeScreen()));
       }

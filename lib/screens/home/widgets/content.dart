@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:math' as math;
 
+import 'package:flutter_test_application/database/requests.dart';
+
 class Artists extends StatefulWidget {
   @override
   _ArtistsState createState() => _ArtistsState();
@@ -14,7 +16,8 @@ class _ArtistsState extends State<Artists> {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _artistsFromDB(),
+        ArtistsDb(
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIxLCJpYXQiOjE2MTIwNzg5NTJ9.MBclj88UtnTnTu7XOFkcjOKwPUNl2U7RQcKlpYcq5yk'),
         _sectionFromDB("Concursos", "Escolha sua categoria", "Romeu e Julieta",
             "Willian Shakespeare", 101, 63, 237, "1", true),
         _sectionFromDB(
@@ -243,177 +246,6 @@ Widget _sectionFromDB(
     );
 
 //Artistas cadastrados e respectivos dados
-
-_artistsFromDB() {
-  return Stack(
-    children: [
-      CarouselSlider(
-        options: CarouselOptions(height: 480.0, enableInfiniteScroll: false),
-        items: [1, 2, 3].map((i) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                padding: EdgeInsets.only(top: 20),
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.5),
-                          child: Image.asset("images/artistas/$i.png"),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          padding:
-                              EdgeInsets.only(bottom: 60, left: 0, right: 90),
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  print("options");
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.all(15),
-                                  child: Icon(
-                                    Icons.more_vert,
-                                    size: 35,
-                                    color: Colors.grey,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(bottom: 30, left: 0),
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  print("tv");
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  padding: EdgeInsets.all(15),
-                                  child: Icon(Icons.tv,
-                                      size: 20,
-                                      color: Color.fromRGBO(218, 47, 57, 1)),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.white),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  print("phone");
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.all(15),
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  child: Icon(
-                                    Icons.headset,
-                                    size: 20,
-                                    color: Color.fromRGBO(218, 47, 57, 1),
-                                  ),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.white),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  print("time");
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.all(15),
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  child: Icon(
-                                    Icons.access_time,
-                                    size: 20,
-                                    color: Colors.white,
-                                  ),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Color.fromRGBO(105, 65, 250, 1)),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Nome Artista",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(77, 75, 75, 1)),
-                            ),
-                            Text(
-                              "Subtitulo",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromRGBO(77, 75, 75, 1)),
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        }).toList(),
-      ),
-      Container(
-        padding: EdgeInsets.only(left: 45, top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Artistas",
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
-            Text(
-              "Escolha seu favorito",
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            )
-          ],
-        ),
-      )
-    ],
-  );
-}
 
 /* 
 [1, 2, 3].map((i) {

@@ -4,19 +4,8 @@ class InputField extends StatelessWidget {
   final String hint;
   final bool obscure;
   final IconData icon;
-  final TextEditingController controller;
-  final TextInputType textInputType;
-  final Function(String) onChanged;
-  final bool enabled;
 
-  InputField(
-      {this.hint,
-      this.obscure,
-      this.icon,
-      this.controller,
-      this.textInputType,
-      this.onChanged,
-      this.enabled});
+  InputField({this.hint, this.obscure, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +16,7 @@ class InputField extends StatelessWidget {
         ),
       ),
       child: TextFormField(
-        keyboardType: textInputType,
         obscureText: obscure,
-        onChanged: onChanged,
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         decoration: InputDecoration(
             suffixIcon: Icon(

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final AnimationController controller;
-  final bool validator;
-  final bool loginstatus;
 
-  StaggerAnimation({this.controller, this.validator, this.loginstatus})
+  StaggerAnimation({this.controller})
       : buttonSqueeze = Tween<double>(begin: 190, end: 45).animate(
           CurvedAnimation(
             parent: controller,
@@ -36,12 +34,8 @@ class StaggerAnimation extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 35),
       child: InkWell(
-        onTap: () async {
+        onTap: () {
           controller.forward();
-          await Future.delayed(Duration(milliseconds: 300));
-          while (loginstatus) {
-            controller.stop();
-          }
         },
         child: Hero(
           tag: "fade",
@@ -51,8 +45,7 @@ class StaggerAnimation extends StatelessWidget {
                   height: 45,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color:
-                        validator ? Colors.black : Color.fromRGBO(0, 0, 0, .5),
+                    color: Colors.black,
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                   ),
                   child: _buildInside(context),
